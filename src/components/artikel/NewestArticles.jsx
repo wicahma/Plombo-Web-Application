@@ -4,12 +4,10 @@ import store from "../../stores/store";
 import Arrows from "../micro/Arrows";
 import ArtikelDownCard from "./ArtikelDownCard";
 import ArtikelUpCard from "./ArtikelUpCard";
-import { user } from "../../stores/reducers/user/usersSlice";
 import { useSelector } from "react-redux";
 import { artikel, getDataAPI } from "../../stores/reducers/artikel/artikelAPI";
 
 const NewestArticles = (props) => {
-  const users = useSelector(user);
   const { newest_data_artikel } = useSelector(artikel);
 
   useEffect(() => {
