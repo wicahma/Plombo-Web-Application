@@ -5,17 +5,16 @@ import store from "../../store";
 export const destinasiSlice = createSlice({
   name: "destinasis",
   initialState: {
-    all_data_destinasi: null,
+    validated_data_destinasi: null,
+    user_data_destinasi: null,
     newest_data_destinasi: null,
   },
   reducers: {
     get_data_destinasi: (state, action) => {
-      // state[action.payload.state] = getData(action.payload.path);
-      // console.log(action.payload.state, action.payload.data);
       state[action.payload.state] = action.payload.data;
     },
-    update_data_destinasi     : (state) => {
-      state.all_data_destinasi = null;
+    update_data_destinasi: (state) => {
+      state.validated_data_destinasi = null;
     },
   },
 });
@@ -38,10 +37,11 @@ export const getDataAPI = async (path, stateName) => {
   // return data;
 };
 
-export const { get_data_destinasi, update_data_destinasi } = destinasiSlice.actions;
+export const { get_data_destinasi, update_data_destinasi } =
+  destinasiSlice.actions;
 export const destinasi = (state) => state.destinasis;
 export const selectPostByJenis = (state, jenis) => {
-  const data = state.destinasis.all_data_destinasi;
+  const data = state.destinasis.validated_data_destinasi;
   if (data) {
     return data.filter((item) => item.jenis === jenis);
   }

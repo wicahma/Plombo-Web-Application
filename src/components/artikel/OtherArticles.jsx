@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import sgtPojok from "../../assets/img/sgtPojok.svg";
+import CardValidation from "../micro/CardValidation";
 
 const OtherArticles = (props) => {
   const [image, setImage] = useState(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const imgLoader = new Image();
-    imgLoader.src = `https://picsum.photos/800/800?random=${props.img}`;
+    imgLoader.src = `https://drive.google.com/uc?export=view&id=${props.img}`;
     imgLoader.onload = () => setImage(imgLoader.src);
   }, []);
   return (
@@ -43,6 +45,7 @@ const OtherArticles = (props) => {
             <img
               className="position-absolute top-0 end-0"
               style={{ transform: "rotate(90deg)" }}
+              alt="sgtPojok"
               src={sgtPojok}
             />
             <h5 className="fs-4 fw-bolder">
@@ -66,17 +69,16 @@ const OtherArticles = (props) => {
               <p className="align-self-end p-0 ms-3 m-0 px-3 popup-read ">
                 Read me
               </p>
+              {pathname.includes("profile") && (
+                <CardValidation validation={props.verified} />
+              )}
             </div>
           ) : (
             <Skeleton
               className="card-img d-flex mb-3"
               baseColor="#d5dfe8"
               highlightColor="#f0f6fc"
-            >
-              <p className="align-self-end p-0 ms-3 m-0 px-3 popup-read ">
-                Read me
-              </p>
-            </Skeleton>
+            />
           )}
         </Link>
       </div>

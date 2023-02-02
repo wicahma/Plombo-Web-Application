@@ -1,3 +1,4 @@
+import HtmlToReactParser from "html-react-parser";
 import React, { useEffect, useState } from "react";
 import sgtPojokWhite from "../../assets/img/sgtPojok-white.svg";
 import roundedFooter from "../../assets/img/rounded-footer.svg";
@@ -27,11 +28,12 @@ const ReadArtikel = (props) => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const dataArtikel = useGetDataArtikel(idArtikel);
+  const [deskripsi, setDeskripsi] = useState(null);
 
   useEffect(() => {
     const imgLoader = new Image();
-    imgLoader.src = `https://picsum.photos/1800/1800?random=${
-      dataArtikel === null ? 12 : dataArtikel.gambar
+    imgLoader.src = `https://drive.google.com/uc?export=view&id=${
+      dataArtikel !== null && dataArtikel.gambar
     }`;
     imgLoader.onload = () => setImage(imgLoader.src);
     dataArtikel !== null &&
@@ -39,6 +41,9 @@ const ReadArtikel = (props) => {
     dataArtikel !== null &&
       setDate(new Date(dataArtikel.createdAt).toLocaleDateString("id-ID"));
     dataArtikel !== null && setDay(new Date(dataArtikel.createdAt).getDay());
+    setDeskripsi(
+      new HtmlToReactParser(dataArtikel === null ? "" : dataArtikel.deskripsi)
+    );
   }, [dataArtikel]);
 
   useEffect(() => {
@@ -124,7 +129,11 @@ const ReadArtikel = (props) => {
       return (
         <div className="row img-article m-auto mt-3">
           {image === null ? (
-            <Skeleton className="gambar-article" />
+            <Skeleton
+              baseColor="#d5dfe8"
+              highlightColor="#f0f6fc"
+              className="gambar-article"
+            />
           ) : (
             <img src={image} className="gambar-article" alt="Gambar artikel" />
           )}
@@ -146,7 +155,7 @@ const ReadArtikel = (props) => {
             </div>
 
             <div className="row read-article pt-4">
-              <div className="col-md-8 px-0">{dataArtikel.deskripsi}</div>
+              <div className="col-md-8 px-0 teks-article">{deskripsi}</div>
               <div className="col-md-4 p-0">
                 <div className="latest-article">
                   <h3 className="position-relative ">

@@ -14,12 +14,13 @@ export const userSlice = createSlice({
     },
     logout_user: (state) => {
       state.data_user = null;
+      state.validated = false;
     },
     update_user: (state, action) => {
       state.data_user = action.payload;
     },
   },
-}); 
+});
 
 export const { add_user, logout_user, update_user } = userSlice.actions;
 export const user = (state) => state.users;

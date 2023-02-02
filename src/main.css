@@ -56,6 +56,10 @@ a:hover {
 }
 
 /* Bagian Navbar */
+.active {
+  font-weight: bold !important;
+}
+
 .nav-item a,
 .login-btn a {
   font-weight: 400;
@@ -269,6 +273,11 @@ nav {
   margin: auto;
 }
 
+.google-maps {
+  width: 100%;
+  height: 600px;
+}
+
 .loading-layer {
   color: var(--white-solid);
   position: fixed;
@@ -281,11 +290,75 @@ nav {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
   transition-duration: 200ms;
+  z-index: 1000;
 }
 
 .loading {
   /* background-color: var(--dark-solid); */
   text-shadow: 0.5rem 0.5rem 1rem var(--dark-solid);
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  margin: auto;
+  margin-top: 70px;
+  background-color: var(--biru-toska);
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.img-profile {
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.profile-section h4 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.profile-content {
+  margin-top: 1rem;
+}
+
+.profile-content {
+  background-color: none;
+}
+
+.content {
+  border: 2px solid;
+}
+
+.validation-card {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.validation-card p {
+  padding: 0;
+  margin: 0;
+  color: var(--white-solid);
+  font-weight: 300;
+  text-rendering: geometricPrecision;
+}
+
+.profile-section p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .img-profile-navbar {
@@ -299,7 +372,46 @@ nav {
 .dropdown-navbar {
   border: none;
   background-color: var(--putih-biru);
+  border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-profile {
+  padding: 0.2rem 1rem 0 1rem;
+  border-bottom: 1px solid var(--hitam);
+  margin: 0;
+  margin-bottom: 0.6rem;
+  width: max-content;
+}
+
+.list-log-out {
+  width: 100%;
+  padding: 0.6rem 1rem 0.5rem;
+}
+
+.list-log-out button {
+  background: #c1192a;
+  width: 100%;
+  color: var(--white-solid);
+  border-radius: 10px !important;
+}
+
+.list-log-out button:hover {
+  background: #a1182a;
+  color: var(--white-solid);
+}
+
+.dropdown-profile h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.dropdown-profile p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0;
+  padding-bottom: 0.5rem;
 }
 
 .dropdown-navbar li a {
@@ -386,9 +498,9 @@ nav {
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   position: absolute;
-  height: var(--other-card-height);
+  height: fit-content;
   width: 90%;
-  bottom: calc(-1 * var(--other-card-height));
+  bottom: -50%;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 100;
@@ -401,8 +513,8 @@ nav {
 .card:has(.inner-card-desc):hover .inner-card-desc {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, calc(-2.8 * var(--other-card-height)));
-  height: var(--other-card-height);
+  bottom: 1rem;
+  height: fit-content;
   width: 90%;
 }
 
@@ -412,13 +524,13 @@ nav {
 }
 
 .card-img {
+  position: relative;
   width: 100%;
   aspect-ratio: 1/1;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 15px;
-  bottom: 1.4rem;
   transition: 150ms;
   box-shadow: 0 0 0 0px inset rgba(0, 0, 0, 0);
   overflow: hidden;
@@ -474,6 +586,18 @@ nav {
   text-decoration: none;
 }
 
+.destinasi-card-wrapper:hover {
+  text-decoration: none;
+}
+
+.card:hover .read-me {
+  padding: 0.1rem 1rem;
+  color: var(--white-solid);
+  bottom: -15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .card:has(> a h5):hover .card-img {
   box-shadow: 0 0 0 2px inset #202526;
 }
@@ -509,14 +633,7 @@ nav {
   position: absolute;
   transition: 250ms;
   right: 0;
-  bottom: -15px;
-}
-.read-me:hover {
-  padding: 0.1rem 1rem;
-  color: var(--white-solid);
-  bottom: 0;
-  text-decoration: none;
-  cursor: pointer;
+  bottom: -35px;
 }
 
 .garis-border {
@@ -712,11 +829,16 @@ nav {
   padding-left: 16px;
 }
 
+.teks-article a {
+  color: var(--biru-toska);
+}
+
 .teks-article p img {
   width: 80%;
   height: auto;
   margin: 1.5rem 0;
   padding: 0;
+  border-radius: 15px;
 }
 
 .teks-article p:has(img) {
@@ -762,6 +884,10 @@ nav {
 
 .la-time {
   font-size: 0.8rem;
+}
+
+.empty-image{
+  width: 20%;
 }
 
 .navbar-toggler {
@@ -935,6 +1061,20 @@ nav {
 
 .container-posting {
   max-width: 844px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: end;
+}
+
+.error-posting {
+  font-size: 0.85rem;
+  background-color: #aa1f2d;
+  max-width: fit-content;
+  color: var(--white-solid);
+  padding: 0.1rem 1rem;
+  border-radius: 5px;
 }
 
 .btn {

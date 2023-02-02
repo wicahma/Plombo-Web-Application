@@ -11,10 +11,10 @@ import MomumentDest from "./MomumentDest";
 import PantaiDest from "./PantaiDest";
 
 const AnotherDestinasiContainer = (props) => {
-  const { all_data_destinasi } = useSelector(destinasi);
+  const { validated_data_destinasi } = useSelector(destinasi);
 
   useEffect(() => {
-    getDataAPI("wisatas", "all_data_destinasi");
+    getDataAPI("wisatas", "validated_data_destinasi");
   }, []);
 
   return (
@@ -23,45 +23,45 @@ const AnotherDestinasiContainer = (props) => {
       <div className="row mt-3 p-0 m-0 popDes">
         <PantaiDest
           dataPantai={
-            all_data_destinasi === null
+            validated_data_destinasi === null
               ? []
-              : all_data_destinasi.filter(
+              : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Pantai"
                 )
           }
         />
         <GunungDest
           dataGunung={
-            all_data_destinasi === null
+            validated_data_destinasi === null
               ? []
-              : all_data_destinasi.filter(
+              : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Gunung/Bukit"
                 )
           }
         />
         <MomumentDest
           dataMonumen={
-            all_data_destinasi === null
+            validated_data_destinasi === null
               ? []
-              : all_data_destinasi.filter(
+              : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Tempat Bersejarah"
                 )
           }
         />
         <AirTerjunDest
           dataAirTerjun={
-            all_data_destinasi === null
+            validated_data_destinasi === null
               ? []
-              : all_data_destinasi.filter(
+              : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Air Terjun"
                 )
           }
         />
         <Lainnya
           dataLainnya={
-            all_data_destinasi === null
+            validated_data_destinasi === null
               ? []
-              : all_data_destinasi.filter(
+              : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Lainnya"
                 )
           }

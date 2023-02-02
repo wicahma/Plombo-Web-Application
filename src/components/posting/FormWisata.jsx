@@ -2,6 +2,14 @@ import React from "react";
 import EditorComponent from "../../components/Editor";
 
 const FormWisata = (props) => {
+  const maps = {
+    center: {
+      lat: -6.1753924,
+      lng: 106.8249641,
+    },
+    zoom: 11,
+  };
+
   return (
     <div>
       <h1>Posting Wisata</h1>
@@ -49,7 +57,11 @@ const FormWisata = (props) => {
             <p className="m-0">Masukkan perkiraan waktu dalam jam</p>
           </div>
         </div>
-
+        <div className="col-sm-12">
+          <label htmlFor="alamat" className="form-label">
+            Alamat
+          </label>
+        </div>
         <div className="col-sm-12 mb-3">
           <label htmlFor="deskripsi" className="form-label">
             Deskripsi

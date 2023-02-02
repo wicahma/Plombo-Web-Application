@@ -16,6 +16,7 @@ const GunungDest = (props) => {
           return (
             <DestinasiCards
               key={data._id}
+              id={data._id}
               img={data.gambar}
               judul={data.namaTempat}
               lokasi={data.lokasi}

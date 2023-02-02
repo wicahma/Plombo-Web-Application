@@ -43,6 +43,7 @@ const ArtikelDownCard = (props) => {
             <img
               className="position-absolute top-0 end-0"
               style={{ transform: "rotate(90deg)" }}
+              alt="sgtPojok"
               src={sgtPojok}
             />
             <h5 className="fs-4 fw-bolder">

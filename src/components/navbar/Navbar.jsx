@@ -7,11 +7,10 @@ import { user } from "../../stores/reducers/user/usersSlice";
 import User from "./User";
 
 const Navbar = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { validated, data_user } = useSelector(user);
 
-  console.log(location);
-  switch (location.pathname) {
+  switch (pathname) {
     case "/login":
       return null;
     case "/register":
@@ -53,13 +52,21 @@ const Navbar = () => {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center">
                 <li className="nav-item">
-                  <Link className="nav-link" aria-current="page" to={"/"}>
+                  <Link
+                    className={`nav-link ${
+                      pathname.includes("home") && "active"
+                    }`}
+                    aria-current="page"
+                    to={"/"}
+                  >
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className={`nav-link ${
+                      pathname.includes("destinasi") && "active"
+                    }`}
                     aria-current="page"
                     to={"/destinasi"}
                   >
@@ -68,9 +75,12 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className={`nav-link ${
+                      pathname.includes("artikel") &&
+                      !/(?=posting)/g.test(pathname) &&
+                      "active"
+                    }`}
                     aria-current="page"
-                    href="artikel.html"
                     to={"/artikel"}
                   >
                     Artikel Wisata
@@ -80,7 +90,9 @@ const Navbar = () => {
                   <>
                     <li className="nav-item">
                       <Link
-                        className="nav-link"
+                        className={`nav-link ${
+                          pathname.includes("posting/wisata") && "active"
+                        }`}
                         aria-current="page"
                         to={"/posting/wisata"}
                       >
@@ -89,7 +101,9 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                       <Link
-                        className="nav-link"
+                        className={`nav-link ${
+                          pathname.includes("posting/artikel") && "active"
+                        }`}
                         aria-current="page"
                         to={"/posting/artikel"}
                       >

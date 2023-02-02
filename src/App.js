@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { user } from "./stores/reducers/user/usersSlice";
 import DestinasiRead from "./pages/destinasi/DestinasiRead";
 import ArtikelRead from "./pages/artikel/ArtikelRead";
+import Profile from "./pages/user/profile/Profile";
 
 function App() {
   const { pathname } = useLocation();
@@ -62,6 +63,15 @@ function App() {
                 element={<Navigate to="/posting/wisata" replace />}
                 errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
               />
+            </Route>
+          )}
+          {validated === true && (
+            <Route
+              path="/profile/:username"
+              element={<Profile />}
+              errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
+            >
+              <Route></Route>
             </Route>
           )}
           <Route

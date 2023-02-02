@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../../main.css";
-import DestinasiCard from "../../components/destinasi/DestinasiCard";
 import Breadcrumb from "../../components/Breadcrumb";
 import MostDestinasiContainer from "../../components/destinasi/MostDestinasiContainer";
 import AnotherDestinasiContainer from "../../components/destinasi/AnotherDestinasiContainer";

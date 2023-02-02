@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import store from "../../stores/store";
+import "../../stores/store";
 import { artikel, getDataAPI } from "../../stores/reducers/artikel/artikelAPI";
 import AirTerjunArticles from "./AirTerjunArticles";
 import GunungArticles from "./GunungArticles";
@@ -10,10 +10,10 @@ import TempatBersejarahArticles from "./TempatBersejarahArticles";
 import { useSelector } from "react-redux";
 
 const AnotherArticles = (props) => {
-  const { all_data_artikel } = useSelector(artikel);
+  const { validated_data_artikel } = useSelector(artikel);
 
   useEffect(() => {
-    getDataAPI("artikels", "all_data_artikel");
+    getDataAPI("artikels", "validated_data_artikel");
   }, []);
   return (
     <div className="row artRow mt-5">
@@ -21,52 +21,54 @@ const AnotherArticles = (props) => {
       <div className="row mt-3 p-0 m-0 popDes">
         <PantaiArticles
           dataPantai={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter(
+              : validated_data_artikel.filter(
                   (data) => data.jenisWisata === "Pantai"
                 )
           }
         />
         <AirTerjunArticles
           dataAirTerjun={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter(
+              : validated_data_artikel.filter(
                   (data) => data.jenisWisata === "Air Terjun"
                 )
           }
         />
         <GunungArticles
           dataGunung={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter(
+              : validated_data_artikel.filter(
                   (data) => data.jenisWisata === "Gunung/Bukit"
                 )
           }
         />
         <PulauArticles
           dataPulau={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter((data) => data.jenisWisata === "Pulau")
+              : validated_data_artikel.filter(
+                  (data) => data.jenisWisata === "Pulau"
+                )
           }
         />
         <TempatBersejarahArticles
           dataTempat={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter(
+              : validated_data_artikel.filter(
                   (data) => data.jenisWisata === "Tempat Bersejarah"
                 )
           }
         />
         <Lainnya
           dataLainnya={
-            all_data_artikel === null
+            validated_data_artikel === null
               ? []
-              : all_data_artikel.filter(
+              : validated_data_artikel.filter(
                   (data) => data.jenisWisata === "Lainnya"
                 )
           }

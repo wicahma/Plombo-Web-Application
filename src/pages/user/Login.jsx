@@ -1,8 +1,8 @@
 import React, { Component, createRef } from "react";
-import { useSelector, useDispatch, createDispatchHook } from "react-redux";
+import { createDispatchHook } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { add_user } from "../../stores/reducers/user/usersSlice";
+// import { add_user } from "../../stores/reducers/user/usersSlice";
 import Loading from "../../components/micro/Loading";
 import store from "../../stores/store";
 
