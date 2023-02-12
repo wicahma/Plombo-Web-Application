@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import Skeleton from "react-loading-skeleton";
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -34,10 +35,16 @@ const useGetDestinasiAPI = (id) => {
 
 const ReadDestinasi = (props) => {
   const { namaDestinasi, idDestinasi } = useParams();
+  const [image, setImage] = React.useState(null);
   const { data_user } = useSelector(user);
   const dataDestinasi = useGetDestinasiAPI(idDestinasi);
   const [deskripsi, setDeskripsi] = React.useState(null);
   useEffect(() => {
+    const imgLoader = new Image();
+    imgLoader.src = `https://drive.google.com/uc?export=view&id=${
+      dataDestinasi !== null && dataDestinasi.gambar
+    }`;
+    imgLoader.onload = () => setImage(imgLoader.src);
     dataDestinasi !== false &&
       setDeskripsi(
         new HtmlToReactParser(
@@ -88,6 +95,21 @@ const ReadDestinasi = (props) => {
                           </h4>
                         </div>
                       )}
+                      {image === null ? (
+                        <Skeleton
+                          width={"100%"}
+                          height={"400px"}
+                          baseColor="#d5dfe8"
+                          highlightColor="#f0f6fc"
+                          style={{ borderRadius: "15px", marginBottom: "1rem" }}
+                        />
+                      ) : (
+                        <img
+                          src={image}
+                          alt="gambar-wisata"
+                          className="image-read-destinasi"
+                        />
+                      )}
                       <h5>Lokasi: {dataDestinasi.lokasi}</h5>
                       <h5>Jenis Wisata: {dataDestinasi.jenisWisata}</h5>
                       <h5>Biaya Masuk: {dataDestinasi.biaya}</h5>
@@ -120,7 +142,7 @@ const ReadDestinasi = (props) => {
                       ]}
                       draggable={false}
                     >
-                      <Popup>popup</Popup>
+                      <Popup>{dataDestinasi.lokasi}</Popup>
                     </Marker>
                   </MapContainer>
 
@@ -141,7 +163,7 @@ const ReadDestinasi = (props) => {
               <div className="row pilihan position-relative">
                 <p className="teks-pilihan">Deskripsi Wisata</p>
               </div>
-              <div className="row px-5">{deskripsi}</div>
+              <div className="row px-5 teks-article">{deskripsi}</div>
             </div>
           </div>
         );

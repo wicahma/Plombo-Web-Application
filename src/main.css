@@ -662,9 +662,18 @@ nav {
   border-top-right-radius: 13rem;
 }
 
+.image-read-destinasi {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
 .gambar-destinasi {
   width: calc(100% - 0.8rem);
-  height: 500px;
+  height: 560px;
   overflow: hidden;
   margin-bottom: 0.8rem;
   border-top-right-radius: 13rem;
@@ -728,7 +737,7 @@ nav {
 /* Map Section */
 .map {
   height: 500px;
-  border-radius: 15px 0 15px 15px;
+  border-radius: 15px;
   z-index: 100;
 }
 
@@ -737,7 +746,7 @@ nav {
 }
 
 .map-container {
-  border-radius: 15px 0 15px 15px;
+  border-radius: 15px;
   border: solid 1px var(--hitam);
   position: relative;
 }
@@ -967,6 +976,9 @@ div .btn-inspect:active {
 
 .teks-article a {
   color: var(--biru-toska);
+  background: var(--hitam);
+  padding: 0 0.5rem;
+  border-radius: 5px;
 }
 
 .teks-article p img {

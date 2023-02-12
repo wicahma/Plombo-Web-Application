@@ -36,7 +36,7 @@ const AnotherDestinasiContainer = (props) => {
               ? []
               : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Gunung/Bukit"
-                )
+                  )
           }
         />
         <MomumentDest

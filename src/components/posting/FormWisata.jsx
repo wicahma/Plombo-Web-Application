@@ -213,12 +213,11 @@ const FormWisata = (props) => {
               ref={mapRef}
               className="map"
             >
-              {/* <InnerMap /> */}
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={center} draggable={true}>
+              <Marker position={center} draggable={false}>
                 <Popup>
                   <h3>Lokasi</h3>
                   <h6>Latitude: {center.lat}</h6>
@@ -227,14 +226,6 @@ const FormWisata = (props) => {
               </Marker>
             </MapContainer>
           </div>
-          {/* <textarea
-            name="lokasiGIS"
-            className="form-control"
-            id="lokasiGIS"
-            cols="30"
-            onChange={(e) => handleOnChange(e)}
-            rows="2"
-          ></textarea> */}
         </div>
 
         <div className="col-sm-12">
