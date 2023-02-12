@@ -1,5 +1,5 @@
 import HtmlToReactParser from "html-react-parser";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import EditorComponent from "../../components/Editor";
 import "react-quill/dist/quill.snow.css";
@@ -13,7 +13,7 @@ import {
 import Loading from "../micro/Loading";
 
 const FormArtikel = (props) => {
-  const maxDesc = 20;
+  const maxDesc = 10;
   const { data_user } = useSelector(user);
   const { loading, result } = useSelector(dataArtikel);
   const [artikel, setArtikel] = useState({
@@ -23,7 +23,6 @@ const FormArtikel = (props) => {
     judul: "",
   });
   const [validation, setValidation] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const input_gambar = useRef();
   const parsed = new HtmlToReactParser(

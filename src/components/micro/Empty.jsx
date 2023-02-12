@@ -4,7 +4,7 @@ const Empty = (props) => {
   return (
     <div className="d-flex flex-column align-items-center">
       <img src={empty} alt="empty" className="empty-image" />
-      <p>Kosong</p>
+      <p>{props.msg}</p>
     </div>
   );
 };

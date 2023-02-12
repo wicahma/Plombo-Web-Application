@@ -1,4 +1,5 @@
 import React from "react";
+import Empty from "../micro/Empty";
 import DestinasiCards from "./DestinasiCards";
 
 const Lainnya = (props) => {
@@ -11,7 +12,9 @@ const Lainnya = (props) => {
       </div>
       {props.dataLainnya === undefined ? (
         <DestinasiCards />
-      ) : props.dataLainnya.length === 0 ? null : (
+      ) : props.dataLainnya.length === 0 ? (
+        <Empty msg="Belum ada Destinasi Lainnya" />
+      ) : (
         props.dataLainnya.map((data) => {
           return (
             <DestinasiCards

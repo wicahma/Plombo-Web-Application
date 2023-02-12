@@ -31,7 +31,9 @@ const OtherArticles = (props) => {
               )}
             </p>
             <p className="m-0">
-              {props.updatedAt || (
+              {props.updatedAt !== undefined ? (
+                props.updatedAt.slice(0, -14)
+              ) : (
                 <Skeleton
                   baseColor="#d5dfe8"
                   highlightColor="#f0f6fc"

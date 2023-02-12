@@ -1,4 +1,5 @@
 import React from "react";
+import Empty from "../micro/Empty";
 import DestinasiCards from "./DestinasiCards";
 
 const PantaiDest = (props) => {
@@ -13,7 +14,7 @@ const PantaiDest = (props) => {
       {props.dataPantai === undefined ? (
         <DestinasiCards />
       ) : props.dataPantai.length === 0 ? (
-        <DestinasiCards />
+        <Empty msg="Belum ada Destinasi tentang Pantai" />
       ) : (
         props.dataPantai.map((data) => {
           return (

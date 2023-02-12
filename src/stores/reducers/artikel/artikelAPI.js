@@ -6,6 +6,8 @@ export const artikelSlice = createSlice({
   name: "artikels",
   initialState: {
     validated_data_artikel: null,
+    unvalidated_data_artikel: null,
+    all_data_artikel: null,
     user_data_artikel: null,
     newest_data_artikel: null,
     loading: false,
@@ -29,14 +31,17 @@ export const artikelSlice = createSlice({
 });
 
 export const getDataAPI = async (path, stateName) => {
+  store.dispatch({ type: "artikels/start_loading" });
   const data = await axios
     .get(`${process.env.REACT_APP_API}${path}`)
     .then((res) => {
       console.log("Respon dari reducer Artikel", res);
+      store.dispatch({ type: "artikels/end_loading", payload: true });
       return res.data;
     })
     .catch((err) => {
       console.log("Error dari reducer Artikel", err);
+      store.dispatch({ type: "artikels/end_loading", payload: false });
       return null;
     });
   store.dispatch({

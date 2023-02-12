@@ -401,6 +401,23 @@ nav {
   color: var(--white-solid);
 }
 
+.list-check-data {
+  width: 100%;
+  padding: 0.6rem 1rem 0.5rem;
+}
+
+.list-check-data button {
+  background: var(--biru-toska);
+  width: 100%;
+  color: var(--white-solid);
+  border-radius: 10px !important;
+}
+
+.list-check-data button:hover {
+  background: #507c81;
+  color: var(--white-solid);
+}
+
 .dropdown-profile h6 {
   font-size: 0.9rem;
   font-weight: 600;
@@ -647,7 +664,7 @@ nav {
 
 .gambar-destinasi {
   width: calc(100% - 0.8rem);
-  height: fit-content;
+  height: 500px;
   overflow: hidden;
   margin-bottom: 0.8rem;
   border-top-right-radius: 13rem;
@@ -659,7 +676,7 @@ nav {
 
 .lokasi {
   width: calc(100% - 0.8rem);
-  height: 300px;
+  height: fit-content;
   overflow: hidden;
   border-top: 2px solid var(--hitam);
 }
@@ -706,6 +723,125 @@ nav {
   object-position: center;
   border-radius: 30px !important;
   z-index: -1 !important;
+}
+
+/* Map Section */
+.map {
+  height: 500px;
+  border-radius: 15px 0 15px 15px;
+  z-index: 100;
+}
+
+.map-read {
+  height: 100px;
+}
+
+.map-container {
+  border-radius: 15px 0 15px 15px;
+  border: solid 1px var(--hitam);
+  position: relative;
+}
+
+.coordinate {
+  z-index: 10;
+  position: absolute;
+  top: -22px;
+  border: solid 1px var(--hitam);
+  border-radius: 10px 10px 0 0;
+  padding: 0 1rem;
+  right: 0;
+  color: var(--white-solid);
+  background-color: var(--biru-toska);
+}
+
+/* Admin section */
+.card-wisata-admin h2,
+.card-artikel-admin h2 {
+  color: var(--white-solid);
+  padding: 0.5rem 5rem 0;
+  margin: 0;
+  border-radius: 15px 15px 0 0;
+  width: max-content;
+}
+
+.card-wisata-admin h2 {
+  background-color: #e6c109;
+}
+.card-artikel-admin h2 {
+  background-color: #e60965;
+}
+
+.card-wisata-admin,
+.card-artikel-admin {
+  margin-bottom: 1rem;
+}
+
+div .btn-inspect,
+div .btn-validate {
+  opacity: 0.5;
+  border: solid 2px var(--white-solid);
+  border-radius: 15px !important;
+  width: max-content;
+  padding: 0.3rem !important;
+  transform: scale(1);
+}
+
+div .btn-validate:hover,
+div .btn-inspect:hover {
+  opacity: 1;
+}
+
+div .btn-validate:active,
+div .btn-inspect:active {
+  transform: scale(0.9);
+}
+
+.btn-inspect svg,
+.btn-validate svg {
+  color: var(--white-solid);
+  aspect-ratio: 1/1;
+  height: 30px;
+}
+
+.inner-card-wisata-admin,
+.inner-card-artikel-admin {
+  background: var(--hitam);
+  border-radius: 15px;
+  color: var(--white-solid);
+  /* padding: ; */
+  overflow: hidden;
+}
+
+.wisata-admin-img,
+.artikel-admin-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+
+.wisata-admin-info,
+.artikel-admin-info {
+  padding: 1rem;
+  margin: 0;
+  backdrop-filter: blur(20px);
+  background-color: rgba(32, 37, 38, 0.3);
+}
+
+.validation-msg h4 {
+  font-size: 1rem;
+  font-weight: 300;
+  height: min-content;
+  margin: 0;
+  padding: 0;
+  color: var(--white-solid);
+}
+
+.validation-msg {
+  background: #dc0101;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .isi-article {
@@ -886,7 +1022,7 @@ nav {
   font-size: 0.8rem;
 }
 
-.empty-image{
+.empty-image {
   width: 20%;
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Empty from "../micro/Empty";
 import OtherArticles from "./OtherArticles";
 
 const Lainnya = (props) => {
@@ -11,7 +12,7 @@ const Lainnya = (props) => {
       </div>
       {props.dataLainnya === undefined ? (
         <OtherArticles />
-      ) : props.dataLainnya.length === 0 ? null : (
+      ) : props.dataLainnya.length === 0 ? <Empty msg="Belum ada Artikel tentang lainnya" /> : (
         props.dataLainnya.map((data) => {
           return (
             <OtherArticles

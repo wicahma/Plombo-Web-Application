@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import parse from "html-react-parser";
 
@@ -15,6 +15,14 @@ const containerHome = {
 
 const ContainerImg = (props) => {
   const [animate, setAnimate] = useState(false);
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    const imgLoader = new Image();
+    imgLoader.src = `${props.img}`;
+    imgLoader.onload = () => setImage(imgLoader.src);
+  }, [props.img]);
+
   return (
     <LazyMotion features={domAnimation}>
       <m.div
@@ -43,7 +51,7 @@ const ContainerImg = (props) => {
       <div
         className="img-section"
         id="img-bg"
-        style={{ backgroundImage: `url(${props.img})` }}
+        style={{ backgroundImage: `url(${image})` }}
       ></div>
     </LazyMotion>
   );

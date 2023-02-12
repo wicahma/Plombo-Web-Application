@@ -1,16 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { user } from "../../stores/reducers/user/usersSlice";
 import store from "../../stores/store";
 
 const User = (props) => {
   const { validated, data_user } = useSelector(user);
-
+  const navigate = useNavigate();
   const handleLogOut = () => {
     localStorage.removeItem("data_user");
     alert("Anda berhasil logout!");
     store.dispatch({ type: "users/logout_user" });
+    navigate("/");
   };
   return (
     <>
@@ -31,19 +32,11 @@ const User = (props) => {
               <li>
                 <Link
                   className="dropdown-item"
-                  to={`/profile/${data_user.username}`}
+                  to={`/profile/${data_user.username}/my-profile`}
                 >
                   My Profile
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  className="dropdown-item"
-                  to={`/profile/${data_user.username}`}
-                >
-                  Articles
-                </Link>
-              </li> */}
               <li>
                 <Link
                   className="dropdown-item"
@@ -52,6 +45,13 @@ const User = (props) => {
                   Settings
                 </Link>
               </li>
+              {data_user.type === "admin" && (
+                <li className="list-check-data">
+                  <button className="btn" onClick={() => navigate(`/profile/${data_user.nama}/admin/check-data`)}>
+                    Check Data
+                  </button>
+                </li>
+              )}
               <li className="list-log-out">
                 <button className="btn" onClick={() => handleLogOut()}>
                   Log Out

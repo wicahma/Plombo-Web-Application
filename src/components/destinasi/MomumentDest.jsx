@@ -1,4 +1,5 @@
 import React from "react";
+import Empty from "../micro/Empty";
 import DestinasiCards from "./DestinasiCards";
 
 const MomumentDest = (props) => {
@@ -12,7 +13,7 @@ const MomumentDest = (props) => {
       {props.dataMonumen === undefined ? (
         <DestinasiCards />
       ) : props.dataMonumen.length === 0 ? (
-        <DestinasiCards />
+        <Empty msg="Belum ada Destinasi tentang Monumen" />
       ) : (
         props.dataMonumen.map((data) => {
           return (

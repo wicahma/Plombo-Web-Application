@@ -13,10 +13,12 @@ import { user } from "./stores/reducers/user/usersSlice";
 import DestinasiRead from "./pages/destinasi/DestinasiRead";
 import ArtikelRead from "./pages/artikel/ArtikelRead";
 import Profile from "./pages/user/profile/Profile";
+import CheckData from "./components/profile/CheckData";
+import MyProfile from "./components/profile/MyProfile";
 
 function App() {
   const { pathname } = useLocation();
-  const { validated } = useSelector(user);
+  const { validated, data_user } = useSelector(user);
   return (
     <>
       <Navbar />
@@ -71,7 +73,19 @@ function App() {
               element={<Profile />}
               errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
             >
-              <Route></Route>
+              <Route
+                path="my-profile"
+                element={<MyProfile />}
+                errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
+              />
+
+              {data_user.type === "admin" && (
+                <Route
+                  path="admin/check-data"
+                  element={<CheckData />}
+                  errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
+                />
+              )}
             </Route>
           )}
           <Route

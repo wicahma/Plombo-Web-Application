@@ -1,4 +1,5 @@
 import React from "react";
+import Empty from "../micro/Empty";
 import OtherArticles from "./OtherArticles";
 
 const PulauArticles = (props) => {
@@ -11,7 +12,7 @@ const PulauArticles = (props) => {
       </div>
       {props.dataPulau === undefined ? (
         <OtherArticles />
-      ) : props.dataPulau.length === 0 ? null : (
+      ) : props.dataPulau.length === 0 ? <Empty msg="Belum ada Artikel tentang Pulau" /> : (
         props.dataPulau.map((data) => {
           return (
             <OtherArticles

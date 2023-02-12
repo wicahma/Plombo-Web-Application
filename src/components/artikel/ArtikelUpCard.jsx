@@ -42,6 +42,7 @@ const ArtikelUpCard = (props) => {
               className="position-absolute bottom-0 end-0"
               style={{ transform: "rotate(180deg)" }}
               src={sgtPojok}
+              alt="sgtPojok"
             />
             <h5 className="fs-4 fw-bolder">
               {props.judul || (
@@ -64,7 +65,9 @@ const ArtikelUpCard = (props) => {
               )}
             </p>
             <p>
-              {props.updatedAt || (
+              {props.updatedAt !== undefined ? (
+                props.updatedAt.slice(0,-14)
+              ) : (
                 <Skeleton
                   baseColor="#d5dfe8"
                   highlightColor="#f0f6fc"
