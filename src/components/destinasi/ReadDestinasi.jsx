@@ -22,7 +22,7 @@ const useGetDestinasiAPI = (id) => {
   const [dataDestinasi, setDataDestinasi] = React.useState(null);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/wisata/${id}`)
+      .get(`${process.env.REACT_APP_API}wisata/${id}`)
       .then((res) => {
         setDataDestinasi(res.data);
         console.log(res.data);
