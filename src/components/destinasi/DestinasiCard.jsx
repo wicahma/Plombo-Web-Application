@@ -8,9 +8,9 @@ const DestinasiCard = (props) => {
 
   useEffect(() => {
     const imgLoader = new Image();
-    imgLoader.src = `https://picsum.photos/800/800?random=${props.img}`;
+    imgLoader.src = `https://drive.google.com/uc?export=view&id=${props.img}`;
     imgLoader.onload = () => setImage(imgLoader.src);
-  }, []);
+  }, [props.img]);
   return (
     <Link
       to={`/destinasi/read/${props.id}&${props.judul}`}
