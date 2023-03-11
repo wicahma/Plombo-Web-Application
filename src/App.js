@@ -15,6 +15,7 @@ import ArtikelRead from "./pages/artikel/ArtikelRead";
 import Profile from "./pages/user/profile/Profile";
 import CheckData from "./components/profile/CheckData";
 import MyProfile from "./components/profile/MyProfile";
+import DestinasiMap from "./pages/destinasi/DestinasiMap";
 
 function App() {
   const { pathname } = useLocation();
@@ -42,6 +43,11 @@ function App() {
           <Route
             path="/destinasi/read/:idDestinasi&:namaDestinasi"
             element={<DestinasiRead />}
+            errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
+          />
+          <Route
+            path="/destinasi/rute/:id"
+            element={<DestinasiMap />}
             errorElement={"Keanya ada yang salah sama ketikanmu lah 🤣"}
           />
           {validated === true && (

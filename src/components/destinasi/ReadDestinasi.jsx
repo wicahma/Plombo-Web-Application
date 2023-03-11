@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HtmlToReactParser from "html-react-parser";
 import sgtPojok from "../../assets/img/sgtPojok.svg";
 // import roundedFooter from "../../assets/img/rounded-footer.svg";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Empty from "../micro/Empty";
 import Loading from "../micro/Loading";
@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Skeleton from "react-loading-skeleton";
 delete L.Icon.Default.prototype._getIconUrl;
+
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
@@ -154,11 +155,21 @@ const ReadDestinasi = (props) => {
                       alt={"segitiga-pojok"}
                     />
                     <h2>Location</h2>
+                    <Link
+                      state={{
+                        lat: dataDestinasi.lokasiGIS.split(",")[0],
+                        lng: dataDestinasi.lokasiGIS.split(",")[1],
+                        lokasi: dataDestinasi.lokasi,
+                        nama: namaDestinasi,
+                      }}
+                      to={`/destinasi/rute/${dataDestinasi._id}`}
+                    >
+                      Lihat rute
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="container-fluid panel-pilihan">
               <div className="row pilihan position-relative">
                 <p className="teks-pilihan">Deskripsi Wisata</p>
