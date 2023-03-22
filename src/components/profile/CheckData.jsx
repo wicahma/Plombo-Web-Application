@@ -41,7 +41,7 @@ const CheckData = (props) => {
 
   const handleValidateData = (idArtikel, idUser, type) => {
     axios
-      .put(`${process.env.REACT_APP_API}/${type}/${idArtikel}&${idUser}`, {
+      .put(`${process.env.REACT_APP_API}${type}/${idArtikel}&${idUser}`, {
         verified: true,
       })
       .then((_) => setChecker(checker ? false : true))
