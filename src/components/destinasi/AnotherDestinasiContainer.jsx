@@ -9,6 +9,7 @@ import GunungDest from "./GunungDest";
 import Lainnya from "./Lainnya";
 import MomumentDest from "./MomumentDest";
 import PantaiDest from "./PantaiDest";
+import PulauDest from "./PulauDest";
 
 const AnotherDestinasiContainer = (props) => {
   const { validated_data_destinasi } = useSelector(destinasi);
@@ -36,7 +37,7 @@ const AnotherDestinasiContainer = (props) => {
               ? []
               : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Gunung/Bukit"
-                  )
+                )
           }
         />
         <MomumentDest
@@ -54,6 +55,15 @@ const AnotherDestinasiContainer = (props) => {
               ? []
               : validated_data_destinasi.filter(
                   (data) => data.jenisWisata === "Air Terjun"
+                )
+          }
+        />
+        <PulauDest
+          dataPulau={
+            validated_data_destinasi === null
+              ? []
+              : validated_data_destinasi.filter(
+                  (data) => data.jenisWisata === "Pulau"
                 )
           }
         />
