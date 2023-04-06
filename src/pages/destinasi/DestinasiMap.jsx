@@ -39,15 +39,15 @@ const DestinasiMap = (props) => {
   };
 
   useEffect(() => {
-    console.log({ activateRute });
     setTimeout(() => {
       setActivateRute(false);
     }, 1000);
   }, [activateRute]);
 
   useEffect(() => {
+    getDataAPI("wisatas", "validated_data_destinasi");
+    console.log({ lat, lng, lokasi, nama });
     return () => {
-      getDataAPI("wisatas", "validated_data_destinasi");
       setRute((prev) => [...prev, "-8.796554,116.121363", `${lat},${lng}`]);
       setRuteDesc((prev) => [
         ...prev,
@@ -67,13 +67,13 @@ const DestinasiMap = (props) => {
       );
   }, [validated_data_destinasi, lat, lng, nama]);
 
-  useEffect(() => {
-    console.group("DestinasiMap");
-    console.log({ dataDestinasi });
-    console.log({ rute });
-    console.log({ ruteDesc });
-    console.groupEnd();
-  }, [dataDestinasi, rute, ruteDesc]);
+  // useEffect(() => {
+  //   console.group("DestinasiMap");
+  //   console.log({ dataDestinasi });
+  //   console.log({ rute });
+  //   console.log({ ruteDesc });
+  //   console.groupEnd();
+  // }, [dataDestinasi, rute, ruteDesc]);
 
   return (
     <div className="main-map-container">
@@ -186,7 +186,7 @@ const DestinasiMap = (props) => {
           </div>
         </div>
         {rute && ruteDesc && !activateRute && (
-          <RoutingMachine lat={lat} lng={lng} rute={rute} ruteDesc={ruteDesc} />
+          <RoutingMachine rute={rute} ruteDesc={ruteDesc} />
         )}
       </MapContainer>
     </div>
