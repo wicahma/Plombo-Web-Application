@@ -18,8 +18,11 @@ const DestinasiMap = (props) => {
   const { validated_data_destinasi } = useSelector(destinasi);
 
   const [dataDestinasi, setDataDestinasi] = useState([]);
-  const [ruteDesc, setRuteDesc] = useState([]);
-  const [rute, setRute] = useState([]);
+  const [ruteDesc, setRuteDesc] = useState([
+    { lokasi: "Titik awal", namaTempat: "Lokasi kamu" },
+    { lokasi: lokasi, namaTempat: nama },
+  ]);
+  const [rute, setRute] = useState(["-8.796554,116.121363", `${lat},${lng}`]);
   const [addrute, setAddrute] = useState(false);
   const [activateRute, setActivateRute] = useState(true);
 
@@ -47,14 +50,6 @@ const DestinasiMap = (props) => {
   useEffect(() => {
     getDataAPI("wisatas", "validated_data_destinasi");
     console.log({ lat, lng, lokasi, nama });
-    return () => {
-      setRute((prev) => [...prev, "-8.796554,116.121363", `${lat},${lng}`]);
-      setRuteDesc((prev) => [
-        ...prev,
-        { lokasi: "Titik awal", namaTempat: "Lokasi kamu" },
-        { lokasi: lokasi, namaTempat: nama },
-      ]);
-    };
   }, [lat, lng, lokasi, nama]);
 
   useEffect(() => {
