@@ -1338,6 +1338,92 @@ div .btn-inspect:active {
   position: relative;
 }
 
+/* MAP SECTION */
+
+.main-map-container {
+  height: 100vh;
+  padding-top: 5vh;
+}
+
+.select-route {
+  position: absolute;
+  border-radius: 5px;
+  top: 0.8rem;
+  width: 118px;
+  min-height: 55px;
+  max-height: 80vh;
+  overflow-y: auto;
+  left: 4rem;
+  background-color: var(--white-solid);
+  border: solid 2px #24373b57;
+  z-index: 1000;
+  transition-duration: 300ms;
+}
+
+.select-route-opened {
+  width: 720px;
+  min-height: 200px;
+}
+
+.list-wisata {
+  width: 360px;
+}
+
+.destinasi-item {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  background-color: var(--white-solid);
+  border: solid 2px #24373b57;
+  transition-duration: 300ms;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.destinasi-item:hover {
+  background-color: var(--biru-toska);
+  color: var(--white-solid);
+}
+
+.destinasi-item:hover .add-button {
+  background-color: var(--white-solid);
+  color: var(--hitam);
+  border-radius: 5px;
+}
+
+.destinasi-item h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.add-button {
+  height: 20px;
+  aspect-ratio: 1/1;
+}
+
+.destinasi-item p {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-select-route {
+  background-color: var(--biru-toska);
+  color: var(--white-solid);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: none;
+  font-size: 1.1rem;
+  position: static;
+  top: 0;
+}
+
+/* RESPONSIVE */
+
 @media screen and (min-width: 480px) {
   .user-not-mobile {
     display: block;

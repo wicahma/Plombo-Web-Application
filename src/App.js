@@ -23,7 +23,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className={`${pathname.includes("login") ? "p-0" : "pt-5"}`}>
+      <div
+        className={`${
+          pathname.includes("login") || pathname.includes("destinasi/rute")
+            ? "p-0"
+            : "pt-5"
+        }`}
+      >
         <Routes key={pathname}>
           <Route
             path="/"
