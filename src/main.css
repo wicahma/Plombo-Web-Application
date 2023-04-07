@@ -290,7 +290,7 @@ nav {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
   transition-duration: 200ms;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .loading {

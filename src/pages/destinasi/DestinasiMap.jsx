@@ -11,6 +11,7 @@ import L from "leaflet";
 import { useLocation } from "react-router-dom";
 import RoutingMachine from "../../components/destinasi/RoutingMachine";
 import { useSelector } from "react-redux";
+import Loading from "../../components/micro/Loading";
 delete L.Icon.Default.prototype._getIconUrl;
 
 const DestinasiMap = (props) => {
@@ -104,6 +105,7 @@ const DestinasiMap = (props) => {
 
   return (
     <div className="main-map-container">
+      <Loading loading={activateRute} />
       <MapContainer
         center={[lat, lng]}
         ref={mapRef}
