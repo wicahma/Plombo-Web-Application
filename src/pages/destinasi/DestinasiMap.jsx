@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import store from "../../stores/store";
 import {
@@ -16,6 +16,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 const DestinasiMap = (props) => {
   const { lat, lng, lokasi, nama } = useLocation().state;
   const { validated_data_destinasi } = useSelector(destinasi);
+  const mapRef = React.useRef();
 
   const [dataDestinasi, setDataDestinasi] = useState([]);
   const [ruteDesc, setRuteDesc] = useState([
@@ -62,26 +63,65 @@ const DestinasiMap = (props) => {
       );
   }, [validated_data_destinasi, lat, lng, nama]);
 
-  // useEffect(() => {
-  //   console.group("DestinasiMap");
-  //   console.log({ dataDestinasi });
-  //   console.log({ rute });
-  //   console.log({ ruteDesc });
-  //   console.groupEnd();
-  // }, [dataDestinasi, rute, ruteDesc]);
+  useEffect(() => {
+    console.group("DestinasiMap");
+    console.log({ dataDestinasi });
+    console.log({ rute });
+    console.log({ ruteDesc });
+    console.log(mapRef.current);
+    console.groupEnd();
+  }, [dataDestinasi, rute, ruteDesc]);
+
+  const createButton = (label, container) => {
+    var btn = L.DomUtil.create("button", "location-finder", container);
+    btn.setAttribute("type", "button");
+    btn.innerHTML = label;
+    return btn;
+  };
+
+  const selectLocation = (e) => {
+    var container = L.DomUtil.create("div"),
+      startBtn = createButton("Mulai dari sini", container);
+
+    L.DomEvent.on(startBtn, "click", function () {
+      console.log("start", e.latlng);
+      // const newRute = rute.splice(1, 0, `${e.latlng.lat},${e.latlng.lng}`);
+      setRute((prev) => {
+        prev.splice(0, 1);
+        prev.unshift(`${e.latlng.lat},${e.latlng.lng}`);
+        return prev;
+      });
+      // console.log({ rute });
+      // console.log({ newRute });
+      setActivateRute(!activateRute);
+    });
+    return startBtn;
+  };
+
+  const LocationFinder = () => {
+    const map = useMapEvents({
+      click(e) {
+        L.popup().setLatLng(e.latlng).setContent(selectLocation(e)).openOn(map);
+      },
+    });
+    return null;
+  };
 
   return (
     <div className="main-map-container">
       <MapContainer
         center={[lat, lng]}
+        ref={mapRef}
         zoom={13}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
       >
+        <LocationFinder />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         <div className={`${addrute && "select-route-opened"} select-route`}>
           <div className="d-flex justify-content-between">
             <button

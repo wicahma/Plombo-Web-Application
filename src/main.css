@@ -1345,6 +1345,16 @@ div .btn-inspect:active {
   padding-top: 5vh;
 }
 
+.location-finder {
+  background-color: var(--biru-toska);
+  color: var(--white-solid);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border: none;
+  font-size: 1.1rem;
+}
+
 .select-route {
   position: absolute;
   border-radius: 5px;
