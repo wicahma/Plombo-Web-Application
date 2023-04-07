@@ -1342,7 +1342,7 @@ div .btn-inspect:active {
 
 .main-map-container {
   height: 100vh;
-  padding-top: 5vh;
+  padding-top: 6vh;
 }
 
 .location-finder {
@@ -1358,16 +1358,18 @@ div .btn-inspect:active {
 .select-route {
   position: absolute;
   border-radius: 5px;
-  top: 0.8rem;
+  bottom: 1rem;
   width: 118px;
   min-height: 55px;
   max-height: 80vh;
+  max-width: 92vw;
   overflow-y: auto;
-  left: 4rem;
+  left: 1rem;
   background-color: var(--white-solid);
   border: solid 2px #24373b57;
   z-index: 1000;
   transition-duration: 300ms;
+  /* overflow-y: auto; */
 }
 
 .select-route-opened {

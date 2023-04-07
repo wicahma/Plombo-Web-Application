@@ -119,7 +119,15 @@ const DestinasiMap = (props) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <div className={`${addrute && "select-route-opened"} select-route`}>
+        <div
+          onMouseEnter={(_) => {
+            _.preventDefault();
+            _.stopPropagation();
+            _.nativeEvent.stopImmediatePropagation();
+            _.defaultPrevented = true;
+          }}
+          className={`${addrute && "select-route-opened"} select-route`}
+        >
           <div className="d-flex justify-content-between">
             <button
               onClick={() => setAddrute(!addrute)}
