@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import {
+  LayersControl,
+  MapContainer,
+  Pane,
+  TileLayer,
+  Tooltip,
+  useMapEvents,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import store from "../../stores/store";
 import {
@@ -106,19 +113,6 @@ const DestinasiMap = (props) => {
   return (
     <div className="main-map-container">
       <Loading loading={activateRute} />
-      <MapContainer
-        center={[lat, lng]}
-        ref={mapRef}
-        zoom={13}
-        scrollWheelZoom={true}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <LocationFinder />
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
         <div
           onMouseEnter={(_) => {
             _.preventDefault();
@@ -225,6 +219,18 @@ const DestinasiMap = (props) => {
             </div>
           </div>
         </div>
+      <MapContainer
+        center={[lat, lng]}
+        ref={mapRef}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <LocationFinder />
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
         {rute && ruteDesc && !activateRute && (
           <RoutingMachine rute={rute} ruteDesc={ruteDesc} />
         )}

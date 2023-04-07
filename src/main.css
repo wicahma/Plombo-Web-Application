@@ -1367,7 +1367,7 @@ div .btn-inspect:active {
   left: 1rem;
   background-color: var(--white-solid);
   border: solid 2px #24373b57;
-  z-index: 1000;
+  z-index: 1500;
   transition-duration: 300ms;
   /* overflow-y: auto; */
 }
