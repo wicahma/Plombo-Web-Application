@@ -50,7 +50,6 @@ const DestinasiMap = (props) => {
 
   useEffect(() => {
     getDataAPI("wisatas", "validated_data_destinasi");
-    console.log({ lat, lng, lokasi, nama });
   }, [lat, lng, lokasi, nama]);
 
   useEffect(() => {
@@ -63,14 +62,14 @@ const DestinasiMap = (props) => {
       );
   }, [validated_data_destinasi, lat, lng, nama]);
 
-  useEffect(() => {
-    console.group("DestinasiMap");
-    console.log({ dataDestinasi });
-    console.log({ rute });
-    console.log({ ruteDesc });
-    console.log(mapRef.current);
-    console.groupEnd();
-  }, [dataDestinasi, rute, ruteDesc]);
+  // useEffect(() => {
+  //   console.group("DestinasiMap");
+  //   console.log({ dataDestinasi });
+  //   console.log({ rute });
+  //   console.log({ ruteDesc });
+  //   console.log(mapRef.current);
+  //   console.groupEnd();
+  // }, [dataDestinasi, rute, ruteDesc]);
 
   const createButton = (label, container) => {
     var btn = L.DomUtil.create("button", "location-finder", container);
@@ -84,15 +83,11 @@ const DestinasiMap = (props) => {
       startBtn = createButton("Mulai dari sini", container);
 
     L.DomEvent.on(startBtn, "click", function () {
-      console.log("start", e.latlng);
-      // const newRute = rute.splice(1, 0, `${e.latlng.lat},${e.latlng.lng}`);
       setRute((prev) => {
         prev.splice(0, 1);
         prev.unshift(`${e.latlng.lat},${e.latlng.lng}`);
         return prev;
       });
-      // console.log({ rute });
-      // console.log({ newRute });
       setActivateRute(!activateRute);
     });
     return startBtn;

@@ -81,7 +81,6 @@ const ReadArtikel = (props) => {
 
   useEffect(() => {
     if (date !== null) {
-      console.log(date.split("/")[1]);
       switch (date.split("/")[1]) {
         case "0":
           setMonth("Januari");

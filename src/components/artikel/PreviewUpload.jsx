@@ -1,7 +1,6 @@
 import React from "react";
 
 const PreviewUpload = (props) => {
-  console.log("Gambar", props.image);
   return (
     <>
       <div

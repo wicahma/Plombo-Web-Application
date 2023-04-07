@@ -82,7 +82,6 @@ const FormWisata = (props) => {
   };
 
   const handleSendWisata = () => {
-    console.log(wisata);
     if (checkValidity()) {
       const formData = new FormData();
       formData.append("judul", wisata.judul);
@@ -98,10 +97,6 @@ const FormWisata = (props) => {
       sendDataAPI(`wisata/${data_user._id}`, formData);
     }
   };
-
-  useEffect(() => {
-    console.log(wisata);
-  }, [wisata]);
 
   return (
     <div>

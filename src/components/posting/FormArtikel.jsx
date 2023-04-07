@@ -67,7 +67,6 @@ const FormArtikel = (props) => {
   };
 
   const handleSendArtikel = () => {
-    console.log(artikel);
     if (checkValidity()) {
       const formData = new FormData();
       formData.append("judul", artikel.judul);

@@ -44,7 +44,6 @@ class Register extends Component {
       });
     } else {
       id === "email" && this.checkEmail(value);
-      console.log("jalan");
       this.setState({
         register: { ...this.state.register, [id]: value },
         error: false,
@@ -113,11 +112,9 @@ class Register extends Component {
     axios
       .post(`${process.env.REACT_APP_API}user`, this.state.register)
       .then((res) => {
-        console.log(res);
         this.setState({ loading: false, register: {}, navigate: true });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ loading: false, error: true, register: {} });
       });
   };

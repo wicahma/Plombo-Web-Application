@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const Breadcrumb = ({ pages }, ...rest) => {
   const { pathname } = useLocation();
-  console.log("Pathnamenyahj", pathname);
   return (
     <div
       className={`row ${pathname.includes("&") ? "breadcrumb-destinasi" : ""}`}

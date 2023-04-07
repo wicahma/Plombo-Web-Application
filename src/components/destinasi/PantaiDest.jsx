@@ -3,7 +3,6 @@ import Empty from "../micro/Empty";
 import DestinasiCards from "./DestinasiCards";
 
 const PantaiDest = (props) => {
-  console.log("data paintai", props.dataPantai);
   return (
     <div className="row">
       <div className="col-sm-12 mt-3">

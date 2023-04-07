@@ -27,7 +27,6 @@ const useGetDestinasiAPI = (id) => {
       .get(`${process.env.REACT_APP_API}wisata/${id}`)
       .then((res) => {
         setDataDestinasi(res.data);
-        console.log(res.data);
       })
       .catch((_) => setDataDestinasi(false));
   }, [id]);

@@ -25,10 +25,8 @@ class Login extends Component {
   handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.id;
-    console.log(this.state.login);
     let newLogin = { ...this.state.login };
     newLogin[name] = value;
-    console.log(newLogin);
     this.setState({
       login: { ...newLogin },
     });
@@ -55,13 +53,11 @@ class Login extends Component {
       )
       .then((res) => {
         this.setState({ loading: false, navigate: true });
-        console.log(res.data);
         store.dispatch({ type: "users/add_user", payload: res.data });
         localStorage.setItem("data_user", JSON.stringify(res.data));
       })
       .catch((err) => {
         this.setState({ loading: false, error: true });
-        console.log(err);
       });
   };
 

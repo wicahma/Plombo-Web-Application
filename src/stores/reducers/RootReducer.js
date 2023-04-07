@@ -10,6 +10,5 @@ const rootReducer = combineReducers({
 });
 
 const reducerInitializedStore = createStore(rootReducer);
-console.log(reducerInitializedStore.getState());
 
 export default rootReducer;
